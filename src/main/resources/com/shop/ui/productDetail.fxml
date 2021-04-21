@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.ProductDetailController">
+   <children>
+      <AnchorPane layoutX="52.0" layoutY="35.0" prefHeight="340.0" prefWidth="1201.0" style="-fx-background-color: #f5f7f7; -fx-background-radius: 5;">
+         <children>
+            <ImageView fx:id="image" fitHeight="314.0" fitWidth="351.0" layoutX="19.0" layoutY="12.0" pickOnBounds="true" />
+            <Text fx:id="name" layoutX="396.0" layoutY="79.736328125" strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="525.7294921875">
+               <font>
+                  <Font name="Arial" size="50.0" />
+               </font>
+            </Text>
+            <Text fx:id="price" layoutX="396.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="price" wrappingWidth="525.7294921875">
+               <font>
+                  <Font name="Arial" size="41.0" />
+               </font>
+            </Text>
+            <Spinner fx:id="amount" editable="true" layoutX="983.0" layoutY="214.0" prefHeight="39.0" prefWidth="181.0">
+               <styleClass>
+                  <String fx:value="split-arrows-horizontal" />
+                  <String fx:value="spinner" />
+               </styleClass>
+            </Spinner>
+            <JFXButton fx:id="buy" layoutX="983.0" layoutY="268.0" onAction="#addToCart" prefHeight="46.0" prefWidth="181.0" style="-fx-background-color: #00c4de;" text="Add to cart" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <AnchorPane layoutX="52.0" layoutY="396.0" prefHeight="322.0" prefWidth="1201.0" style="-fx-border-color: #d9dede; -fx-border-radius: 5;">
+         <children>
+            <Text layoutX="21.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+               <font>
+                  <Font name="Arial" size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="description" layoutX="22.0" layoutY="72.62109375" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="1161.037109375">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
