@@ -14,7 +14,7 @@ import javafx.scene.text.Text;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class ProductDetailController {
+public class CustomerProductDetailController {
     Product product;
 
     public void setProduct(Product product) throws Exception {

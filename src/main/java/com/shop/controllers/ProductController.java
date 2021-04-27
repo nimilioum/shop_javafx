@@ -12,8 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class ProductController {
     private Product product;
@@ -23,13 +21,11 @@ public class ProductController {
             @Override
             public void handle(MouseEvent mouseEvent) {
 
-//                System.out.println(product.getName());
-
                 try {
-                    FXMLLoader loader = App.getFXML("productDetail");
+                    FXMLLoader loader = App.getFXML("customerProductDetail");
                     loader.load();
                     AnchorPane newPane = loader.getRoot();
-                    ProductDetailController controller = loader.getController();
+                    CustomerProductDetailController controller = loader.getController();
                     controller.setProduct(product);
                     TemplateController.cPane.getChildren().clear();
                     TemplateController.cPane.getChildren().add(newPane);

@@ -17,13 +17,22 @@ public class Test {
 //        InventoryStaff staff1 = new InventoryStaff("nima", "saei", "a@a.co", "nima", "saei",
 //                "1234567890", "09141234123");
 //        staff1.save();
-        Product product1 = new Product("samsung 2", 1200, 5, "new mobile blah blah blah");
-        Product product2 = new Product("apple 2", 1200, 5, "new mobile blah blah blah");
+//        Product product1 = new Product("samsung 2", 1200, 5, "new mobile blah blah blah");
+//        Product product2 = new Product("apple 2", 1200, 5, "new mobile blah blah blah");
+        Product product1 = Product.find("samsung 2");
+        Product product2 = Product.find("apple 2");
+        Category category1 = Category.find("mobile");
+        Category category2 = Category.find("phone");
+
+//        product1.addCategory(category1);
+//        product2.addCategory(category1);
+        product1.addCategory(category2);
+
 
 //        Category category = new Category("phone");
 
-        product1.save();
-        product2.save();
+//        product1.save();
+//        product2.save();
 //        category.save();
 
 //        product1.addCategory(category);

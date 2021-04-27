@@ -30,6 +30,12 @@ begin
     update product set price = newPrice where  id = productId;
 end;
 
+drop procedure if exists updateProductCount;
+create procedure updateProductCount(in newCount integer, in productId integer)
+begin
+    update product set count = newCount where  id = productId;
+end;
+
 drop procedure if exists updateProductName;
 create procedure updateProductName(in newName text, in productId integer)
 begin
@@ -92,7 +98,19 @@ end;
 drop procedure if exists searchProduct;
 create procedure searchProduct(in in_name text)
 begin
-    select * from product where name like in_name;
+    select * from product where name like CONCAT('%', in_name ,'%');
+end;
+
+drop procedure if exists findProduct;
+create procedure findProduct(in in_name text)
+begin
+    select * from product where name = in_name;
+end;
+
+drop procedure if exists getProduct;
+create procedure getProduct(in in_id integer)
+begin
+    select * from product where id = in_id;
 end;
 
 drop procedure if exists getAllCategories;
@@ -109,17 +127,23 @@ end;
 
 
 
+drop procedure if exists findCategory;
+create procedure findCategory(in in_name text)
+begin
+    select * from category where name = in_name;
+end;
+
 drop procedure if exists searchCategory;
 create procedure searchCategory(in in_name text)
 begin
-    select * from category where name = in_name;
+    select * from category where name like CONCAT('%', in_name ,'%');
 end;
 
 
 drop procedure if exists getProductsByCategory;
 create procedure getProductsByCategory(in category integer)
 begin
-    select * from product join product_category pc on category_id = category;
+    select * from product inner join product_category pc on pc.category_id = category and  product.id = pc.product_id;
 end;
 
 

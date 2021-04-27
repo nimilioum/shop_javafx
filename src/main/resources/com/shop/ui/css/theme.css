@@ -53,6 +53,37 @@
     -fx-background-color:  #00c4de;
 }
 
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #0285c2;
+    -fx-background-radius: 15;
+}
+
+.scroll-pane .scroll-bar .increment-arrow {
+    -fx-background-color: #0285c2;
+}
+
+.scroll-pane .scroll-bar .decrement-arrow {
+    -fx-background-color: #0285c2;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: #ffffff;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-alignment: center;
+    -fx-font-size: 25;
+    -fx-fill-height: 40px;
+}
+
+
+
 /*.search-field {*/
 /*    -fx-background-radius: 10px;*/
 /*    -fx-border-radius: 10px;*/

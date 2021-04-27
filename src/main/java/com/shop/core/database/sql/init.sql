@@ -84,12 +84,19 @@ create table if not exists orders (
     foreign key (deliver_id) references delivery_staff(id) on delete set null
 );
 
-create table if not exists order_product (
+create table if not exists item(
+    id integer primary key auto_increment unique not null,
+    product_id integer not null ,
+    foreign key (product_id) references product(id) on DELETE cascade ,
+    count integer default 0
+);
+
+create table if not exists order_item (
     order_id integer not null ,
     foreign key (order_id) references orders(id) on delete cascade ,
-    product_id integer not null ,
-    foreign key (product_id) references product(id) on delete cascade,
-    primary key (order_id, product_id),
+    item_id integer not null ,
+    foreign key (item_id) references item(id) on delete cascade,
+    primary key (order_id, item_id),
     product_name text,
     product_price integer
 );
@@ -107,9 +114,10 @@ begin
 end;
 
 drop procedure if exists insertOrderProduct;
-create procedure insertOrderProduct(in orderId integer, in productId integer)
+drop procedure if exists insertOrderItem;
+create procedure insertOrderItem(in orderId integer, in itemId integer)
 begin
-    insert into order_product(order_id, product_id) values (orderId, productId);
+    insert into order_item(order_id, item_id) values (orderId, itemId);
 end;
 
 
@@ -155,5 +163,5 @@ drop procedure if exists getOrderProducts;
 create procedure getOrderProducts(in orderId integer)
 begin
     select id, op.product_name  as name, op.product_price as price, count , sales, image_path
-    from product join order_product op on op.order_id = orderId;
+    from product join order_item op on op.order_id = orderId;
 end;

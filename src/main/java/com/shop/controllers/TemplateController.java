@@ -1,6 +1,7 @@
 package com.shop.controllers;
 
 import com.shop.App;
+import com.shop.core.users.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,8 @@ import java.util.ResourceBundle;
 
 public class TemplateController implements Initializable {
     public static AnchorPane cPane;
+
+    public static Person user = null;
 
     @FXML
     private StackPane stackPane;
@@ -43,13 +46,18 @@ public class TemplateController implements Initializable {
     }
 
     @FXML
-    void getCategoriesPage(ActionEvent event) {
-
+    void getCategoriesPage(ActionEvent event) throws IOException {
+        FXMLLoader loader = App.getFXML("categoriesList");
+        loader.load();
+        AnchorPane newPane = loader.getRoot();
+        content.getChildren().clear();
+        content.getChildren().add(newPane);
+        content.toBack();
     }
 
     @FXML
     void getMainPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = App.getFXML("mainPage");
+        FXMLLoader loader = App.getFXML("productList");
         loader.load();
         AnchorPane newPane = loader.getRoot();
         content.getChildren().clear();

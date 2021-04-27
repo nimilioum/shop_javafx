@@ -40,16 +40,18 @@ public class Product implements DBModel {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    public void setImagePath(String imagePath) throws SQLException {
         this.imagePath = imagePath;
+        updateImage();
     }
 
     public long getSales() {
         return sales;
     }
 
-    public void setSales(long sales) {
+    public void setSales(long sales) throws SQLException {
         this.sales = sales;
+        updateSales();
     }
 
     public long getId() {
@@ -60,36 +62,40 @@ public class Product implements DBModel {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws SQLException {
         this.name = name;
+        updateName();
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(double price) throws Exception {
         this.price = price;
+        updatePrice();
     }
 
     public long getCount() {
         return count;
     }
 
-    public void setCount(long count) {
+    public void setCount(long count) throws Exception {
         this.count = count;
+        updateCount();
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description) throws SQLException {
         this.description = description;
+        updateDescription();
     }
 
     @Override
@@ -144,8 +150,7 @@ public class Product implements DBModel {
         statement.setLong("category", category.getId());
 
         ResultSet resultSet = statement.executeQuery();
-        while (! resultSet.isClosed() && resultSet.next() ) {
-            System.out.println(resultSet.getString(1));
+        while (resultSet.next() ) {
             products.add(new Product(resultSet));
         }
         statement.close();
@@ -163,6 +168,20 @@ public class Product implements DBModel {
         }
         statement.close();
         return products;
+    }
+
+    public static Product find(String name) throws Exception {
+        String query = "call findProduct(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        statement.setString("in_name", name);
+
+        ResultSet resultSet = statement.executeQuery();
+        Product product = null;
+        if (resultSet.next()) product = new Product(resultSet);
+
+        statement.close();
+        return product;
     }
 
     public static ArrayList<Product> searchProduct(String name) throws Exception {
@@ -215,6 +234,17 @@ public class Product implements DBModel {
         CallableStatement statement = connection.prepareCall(query);
 
         statement.setDouble("newPrice", price);
+        statement.setLong("productId", id);
+
+        statement.executeUpdate();
+        statement.close();
+    }
+
+    private void updateCount() throws Exception {
+        String query = "call updateProductCount(?, ?)";
+        CallableStatement statement = connection.prepareCall(query);
+
+        statement.setDouble("newCount", count);
         statement.setLong("productId", id);
 
         statement.executeUpdate();

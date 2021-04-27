@@ -3,6 +3,7 @@ package com.shop.core;
 import com.shop.core.database.DBModel;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Category implements DBModel {
     private Connection connection = null;
@@ -50,6 +51,49 @@ public class Category implements DBModel {
         statement.close();
     }
 
+    public static Category find(String name) throws Exception {
+        String query = "call findCategory(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        statement.setString("in_name", name);
+
+        ResultSet resultSet = statement.executeQuery();
+        Category category = null;
+
+        if (resultSet.next()) category = new Category(resultSet);
+
+        statement.close();
+        return category;
+    }
+
+    public static ArrayList<Category> getAllCategories() throws Exception {
+        String query = "call getAllCategories()";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+        ArrayList<Category> categories = new ArrayList<>();
+
+        ResultSet resultSet = statement.executeQuery();
+        while (!resultSet.isClosed() && resultSet.next()) {
+            categories.add(new Category(resultSet));
+        }
+        statement.close();
+        return categories;
+    }
+
+    public static ArrayList<Category> searchCategories(String name) throws Exception {
+        String query = "call searchCategory(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+        ArrayList<Category> categories = new ArrayList<>();
+
+        statement.setString("in_name", name);
+
+        ResultSet resultSet = statement.executeQuery();
+        while (!resultSet.isClosed() && resultSet.next()) {
+            categories.add(new Category(resultSet));
+        }
+        statement.close();
+        return categories;
+    }
+
     @Override
     public void delete() throws Exception {
         String query = "call deleteCategory(?)";
@@ -58,5 +102,10 @@ public class Category implements DBModel {
         statement.setLong("categoryId", id);
         statement.executeUpdate();
         statement.close();
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
