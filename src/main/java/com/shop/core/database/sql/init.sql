@@ -88,18 +88,11 @@ create table if not exists item(
     id integer primary key auto_increment unique not null,
     product_id integer not null ,
     foreign key (product_id) references product(id) on DELETE cascade ,
+    order_id integer,
+    foreign key (order_id) references orders(id) on DELETE cascade ,
     count integer default 0
 );
 
-create table if not exists order_item (
-    order_id integer not null ,
-    foreign key (order_id) references orders(id) on delete cascade ,
-    item_id integer not null ,
-    foreign key (item_id) references item(id) on delete cascade,
-    primary key (order_id, item_id),
-    product_name text,
-    product_price integer
-);
 
 
 
@@ -107,18 +100,23 @@ create table if not exists order_item (
 
 
 drop procedure if exists insertOrder;
-create procedure insertOrder(in costumerId integer, in createDate text, in deliverDate text, in in_price integer)
+create procedure insertOrder(in costumerId integer, in createDate text, in in_price integer, out id integer)
 begin
-    insert into orders(customer_id, creation_date, delivery_date, status, price) values
-                    (costumerId, createDate, deliverDate, 0, in_price);
+    insert into orders(customer_id, creation_date, status, price) values
+                    (costumerId, createDate, 0, in_price);
+    SELECT LAST_INSERT_ID() into id;
 end;
 
-drop procedure if exists insertOrderProduct;
-drop procedure if exists insertOrderItem;
-create procedure insertOrderItem(in orderId integer, in itemId integer)
+drop procedure if exists insertItem;
+create procedure insertItem(in productId integer, in inCount integer, in orderId integer, out id integer)
 begin
-    insert into order_item(order_id, item_id) values (orderId, itemId);
+    insert into item(product_id, count, order_id) VALUES (productId, inCount, orderId);
+    SELECT LAST_INSERT_ID() into id;
 end;
+
+
+drop procedure if exists insertOrderItem;
+
 
 
 
@@ -127,7 +125,11 @@ end;
 
 
 
-
+drop procedure if exists updateOrderStatus;
+create procedure updateOrderStatus(in in_status integer, in orderId integer)
+begin
+    update orders set status = in_status where id = orderId;
+end;
 
 
 

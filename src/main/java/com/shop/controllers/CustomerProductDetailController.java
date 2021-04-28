@@ -1,6 +1,7 @@
 package com.shop.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.shop.core.Item;
 import com.shop.core.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,8 +58,10 @@ public class CustomerProductDetailController {
     private JFXButton buy;
 
     @FXML
-    void addToCart(ActionEvent event) {
-
+    void addToCart(ActionEvent event) throws Exception {
+        if (amount.getValue() != 0) {
+            CartController.items.add(new Item(product, amount.getValue()));
+        }
     }
 
 }

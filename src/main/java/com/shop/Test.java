@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) throws Exception {
-//        Customer customer = new Customer("nima", "saei", "a@a.co", "nima", "saei");
-//        customer.save();
+        Customer customer = new Customer("nima", "saei", "a@a.co", "nima", "saei");
+        customer.save();
 //        Customer customer = Customer.find("nima", "saei");
 //        System.out.println(customer.getEmail());
 //        InventoryStaff staff1 = new InventoryStaff("nima", "saei", "a@a.co", "nima", "saei",
@@ -19,14 +19,14 @@ public class Test {
 //        staff1.save();
 //        Product product1 = new Product("samsung 2", 1200, 5, "new mobile blah blah blah");
 //        Product product2 = new Product("apple 2", 1200, 5, "new mobile blah blah blah");
-        Product product1 = Product.find("samsung 2");
-        Product product2 = Product.find("apple 2");
-        Category category1 = Category.find("mobile");
-        Category category2 = Category.find("phone");
+//        Product product1 = Product.find("samsung 2");
+//        Product product2 = Product.find("apple 2");
+//        Category category1 = Category.find("mobile");
+//        Category category2 = Category.find("phone");
 
 //        product1.addCategory(category1);
 //        product2.addCategory(category1);
-        product1.addCategory(category2);
+//        product1.addCategory(category2);
 
 
 //        Category category = new Category("phone");
