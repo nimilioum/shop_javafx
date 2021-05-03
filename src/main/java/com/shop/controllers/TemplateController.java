@@ -57,7 +57,11 @@ public class TemplateController {
 
     @FXML
     void getAccountPage(ActionEvent event) throws Exception {
-        FXMLLoader loader = App.getFXML("customer/account");
+        FXMLLoader loader = null;
+        if (user instanceof Customer || user == null)
+            loader = App.getFXML("customer/account");
+        else if (user instanceof ShopStaff)
+            loader = App.getFXML("admin/account");
         loader.load();
         AnchorPane newPane = loader.getRoot();
         content.getChildren().clear();
@@ -68,7 +72,7 @@ public class TemplateController {
     @FXML
     void getCartPage(ActionEvent event) throws Exception {
         FXMLLoader loader = null;
-        if (user instanceof Customer)
+        if (user instanceof Customer || user == null)
             loader = App.getFXML("customer/cart");
         else if (user instanceof ShopStaff)
             loader = App.getFXML("admin/orders");

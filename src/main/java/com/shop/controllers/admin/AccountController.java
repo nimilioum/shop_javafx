@@ -1,8 +1,6 @@
-package com.shop.controllers.customer;
+package com.shop.controllers.admin;
 
-import com.jfoenix.controls.JFXButton;
 import com.shop.App;
-import com.shop.controllers.TemplateController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,26 +9,13 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class AccountController {
-    public void initialize() {
-        if (TemplateController.user == null) {
-            settingsButton.setDisable(true);
-            ordersButton.setDisable(true);
-        }
-    }
 
     @FXML
     private AnchorPane content;
 
     @FXML
-    private JFXButton settingsButton;
-
-    @FXML
-    private JFXButton ordersButton;
-
-
-    @FXML
-    void getOrdersPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = App.getFXML("customer/orders");
+    void getAdminRegisterPage(ActionEvent event) throws IOException {
+        FXMLLoader loader = App.getFXML("admin/adminRegister");
         loader.load();
         AnchorPane newPane = loader.getRoot();
         content.getChildren().clear();
@@ -39,8 +24,8 @@ public class AccountController {
     }
 
     @FXML
-    void getSettingsPage(ActionEvent event) throws Exception {
-        FXMLLoader loader = App.getFXML("customer/settings");
+    void getSettingsPage(ActionEvent event) throws IOException {
+        FXMLLoader loader = App.getFXML("admin/settings");
         loader.load();
         AnchorPane newPane = loader.getRoot();
         content.getChildren().clear();
@@ -48,4 +33,13 @@ public class AccountController {
         content.toBack();
     }
 
+    @FXML
+    void getStaffRegisterPage(ActionEvent event) throws IOException {
+        FXMLLoader loader = App.getFXML("admin/staffRegister");
+        loader.load();
+        AnchorPane newPane = loader.getRoot();
+        content.getChildren().clear();
+        content.getChildren().add(newPane);
+        content.toBack();
+    }
 }

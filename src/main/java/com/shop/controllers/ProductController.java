@@ -25,7 +25,7 @@ public class ProductController {
             public void handle(MouseEvent mouseEvent) {
 
                 try {
-                    if (TemplateController.user instanceof Customer) {
+                    if (TemplateController.user instanceof Customer || TemplateController.user == null) {
                         FXMLLoader loader = App.getFXML("customer/productDetail");
                         loader.load();
                         AnchorPane newPane = loader.getRoot();

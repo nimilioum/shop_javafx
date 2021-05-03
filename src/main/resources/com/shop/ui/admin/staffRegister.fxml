@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.admin.StaffRegisterController">
+   <children>
+      <JFXTextField fx:id="fname" layoutX="292.0" layoutY="167.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXTextField fx:id="lname" layoutX="292.0" layoutY="247.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXTextField fx:id="email" layoutX="292.0" layoutY="327.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXTextField fx:id="phone" layoutX="292.0" layoutY="407.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXTextField fx:id="nc" layoutX="292.0" layoutY="487.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXTextField fx:id="username" layoutX="892.0" layoutY="237.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXPasswordField fx:id="password" layoutX="892.0" layoutY="317.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXPasswordField fx:id="confirmPassword" layoutX="892.0" layoutY="397.0" prefHeight="26.0" prefWidth="261.0" />
+      <Text layoutX="61.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NC Code :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="664.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="664.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="664.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Line endX="-100.0" endY="487.0" layoutX="740.0" layoutY="108.0" startX="-100.0" startY="-27.0" stroke="#04438c" />
+      <JFXButton layoutX="578.0" layoutY="657.0" onAction="#register" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #00fcf4;" text="Register">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="staffType" layoutX="892.0" layoutY="477.0" prefHeight="26.0" prefWidth="261.0" />
+      <Text layoutX="664.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Type :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
