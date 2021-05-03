@@ -65,6 +65,8 @@ public class TemplateController {
             loader = App.getFXML("admin/account");
         else if (user instanceof InventoryStaff)
             loader = App.getFXML("inventoryStaff/account");
+        else if (user instanceof DeliveryStaff)
+            loader = App.getFXML("deliveryStaff/account");
         loader.load();
         AnchorPane newPane = loader.getRoot();
         content.getChildren().clear();
@@ -81,6 +83,8 @@ public class TemplateController {
             loader = App.getFXML("admin/orders");
         else if (user instanceof InventoryStaff)
             loader = App.getFXML("inventoryStaff/orders");
+        else if (user instanceof DeliveryStaff)
+            loader = App.getFXML("deliveryStaff/orders");
 
         loader.load();
         AnchorPane newPane = loader.getRoot();
@@ -113,16 +117,19 @@ public class TemplateController {
 
     public void initialize() throws Exception {
 
+//        user = Customer.find("nima", "saei");
+//        user = ShopStaff.find("nima", "saei");
+//        user = InventoryStaff.find("nima", "saei");
+        user = DeliveryStaff.find("nima", "saei");
+
         if (user instanceof Staff) cartButton.setText("Orders");
-        if (user instanceof DeliveryStaff) cartButton.setDisable(true);
 
         cPane = content;
         aPane = pane;
         stPane = stackPane;
 
-//        user = Customer.find("nima", "saei");
-//        user = ShopStaff.find("nima", "saei");
-        user = InventoryStaff.find("nima", "saei");
+
+
         if (user != null) {
             FXMLLoader loader = App.getFXML("authUser");
             loader.load();

@@ -160,6 +160,12 @@ begin
     select * from orders where customer_id = userId;
 end;
 
+drop procedure if exists getDelivererOrders;
+create procedure getDelivererOrders(in userId integer)
+begin
+    select * from orders where deliver_id = userId and status != 2;
+end;
+
 drop procedure if exists getAllOrders;
 create procedure getAllOrders()
 begin

@@ -41,13 +41,26 @@ public class SettingsController {
 
     @FXML
     void done(ActionEvent event) throws Exception {
-        if (! newUsername.getText().equals("")) customer.updateUsername(newUsername.getText());
-        if (! newEmail.getText().equals("")) customer.updateEmail(newEmail.getText());
-        if (! newPhone.getText().equals("")) customer.updatePhone(newPhone.getText());
-        if (! newAddress.getText().equals("")) customer.updateAddress(newAddress.getText());
-        if (! newPass.getText().equals("")) {
-            if (newPass.getText().equals(customer.getPassword()) && newPass.getText().equals(confirmPass.getText()))
-                customer.updatePassword(newPass.getText());
+        boolean alert = false;
+        if (!newUsername.getText().equals("")) {
+            customer.updateUsername(newUsername.getText());
+            alert = true;
         }
+        if (!newEmail.getText().equals("")) {
+            customer.updateEmail(newEmail.getText());
+            alert = true;
+        }
+        if (!newPhone.getText().equals("")) {
+            customer.updatePhone(newPhone.getText());
+            alert = true;
+        }
+        if (!newPass.getText().equals("")) {
+            if (currentPass.getText().equals(customer.getPassword()) && newPass.getText().equals(confirmPass.getText())) {
+                customer.updatePassword(newPass.getText());
+                alert = true;
+            }
+            TemplateController.alertError("Passwords do not match or incorrect password");
+        }
+        if (alert) TemplateController.alertSuccess("Changes saved!");
     }
 }

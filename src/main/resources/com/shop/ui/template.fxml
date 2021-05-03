@@ -55,7 +55,7 @@
                                  </image></ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton contentDisplay="TOP" onAction="#getCartPage" prefHeight="75.0" prefWidth="320.0" ripplerFill="#7cebfc" styleClass="main-button" text="Cart">
+                        <JFXButton fx:id="cartButton" contentDisplay="TOP" onAction="#getCartPage" prefHeight="75.0" prefWidth="320.0" ripplerFill="#7cebfc" styleClass="main-button" text="Cart">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

@@ -19,9 +19,9 @@ public class Test {
 //                "1234567890", "09101112233");
 //        customer.save();
 
-        DeliveryStaff customer = new DeliveryStaff("nima", "saei", "a@a.co", "nima", "saei",
-                "1234567890", "09101112233");
-        customer.save();
+//        DeliveryStaff customer = new DeliveryStaff("nima", "saei", "a@a.co", "nima", "saei",
+//                "1234567890", "09101112233");
+//        customer.save();
 
 //        Customer customer = Customer.find("nima", "saei");
 //        System.out.println(customer.getEmail());

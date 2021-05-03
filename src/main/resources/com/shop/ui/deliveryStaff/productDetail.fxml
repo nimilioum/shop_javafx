@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import java.lang.String?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.customer.ProductDetailController">
+<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.deliveryStaff.ProductDetailController">
    <children>
       <AnchorPane layoutX="52.0" layoutY="35.0" prefHeight="340.0" prefWidth="1201.0" style="-fx-background-color: #f5f7f7; -fx-background-radius: 5;">
          <children>
@@ -24,13 +21,6 @@
                   <Font name="Arial" size="41.0" />
                </font>
             </Text>
-            <Spinner fx:id="amount" editable="true" layoutX="983.0" layoutY="214.0" prefHeight="39.0" prefWidth="181.0">
-               <styleClass>
-                  <String fx:value="split-arrows-horizontal" />
-                  <String fx:value="spinner" />
-               </styleClass>
-            </Spinner>
-            <JFXButton fx:id="buy" layoutX="983.0" layoutY="268.0" onAction="#addToCart" prefHeight="46.0" prefWidth="181.0" style="-fx-background-color: #00c4de;" text="Add to cart" />
          </children>
          <effect>
             <DropShadow />

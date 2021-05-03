@@ -28,7 +28,7 @@ public class ProductDetailController {
         image.setImage(new Image(new FileInputStream(product.getImagePath())));
         name.setText(product.getName());
         price.setText("-");
-        if (product.getCount() > 0) price.setText(String.valueOf(product.getPrice()));
+        price.setText(String.valueOf(product.getPrice()));
 
         description.setText(product.getDescription());
         initSpinner();

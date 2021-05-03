@@ -64,8 +64,9 @@ public class Order implements DBModel {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
+    public void setDeliveryDate(Date deliveryDate) throws Exception {
         this.deliveryDate = deliveryDate;
+        updateDeliverDate();
     }
 
     public int getStatus() {
@@ -180,6 +181,19 @@ public class Order implements DBModel {
         CallableStatement statement = DBModel.setConnection().prepareCall(query);
 
         statement.setLong("userId", customer.getId());
+
+        ResultSet resultSet = statement.executeQuery();
+        ArrayList<Order> orders = new ArrayList<>();
+
+        while (resultSet.next()) orders.add(new Order(resultSet));
+        return orders;
+    }
+
+    public static ArrayList<Order> getDelivererOrders(DeliveryStaff staff) throws Exception {
+        String query = "call getDelivererOrders(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        statement.setLong("userId", staff.getId());
 
         ResultSet resultSet = statement.executeQuery();
         ArrayList<Order> orders = new ArrayList<>();
