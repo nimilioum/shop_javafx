@@ -64,6 +64,12 @@ begin
     select * from customer where username = in_username and password = SHA2(in_password, 256) limit 1;
 end;
 
+drop procedure if exists findCustomerById;
+create procedure findCustomerById(in userId integer)
+begin
+    select * from customer where id = userId limit 1;
+end;
+
 
 # unique fields check
 

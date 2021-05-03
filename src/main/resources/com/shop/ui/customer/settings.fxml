@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.customer.SettingsController">
+   <children>
+      <JFXTextField fx:id="newUsername" layoutX="260.0" layoutY="140.0" prefHeight="40.0" prefWidth="331.0" />
+      <JFXTextField fx:id="currentPass" layoutX="260.0" layoutY="240.0" prefHeight="40.0" prefWidth="331.0" />
+      <JFXTextField fx:id="newPass" layoutX="260.0" layoutY="340.0" prefHeight="40.0" prefWidth="331.0" />
+      <JFXTextField fx:id="confirmPass" layoutX="260.0" layoutY="440.0" prefHeight="40.0" prefWidth="331.0" />
+      <JFXTextField fx:id="newEmail" layoutX="882.0" layoutY="140.0" prefHeight="40.0" prefWidth="331.0" />
+      <JFXTextField fx:id="newPhone" layoutX="882.0" layoutY="240.0" prefHeight="40.0" prefWidth="331.0" />
+      <JFXTextArea fx:id="newAddress" layoutX="882.0" layoutY="369.0" prefHeight="222.0" prefWidth="331.0" />
+      <Line endX="-49.0" endY="547.0" layoutX="689.0" layoutY="86.0" startX="-49.0" startY="-17.0" />
+      <Text layoutX="32.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Username :" textAlignment="CENTER" wrappingWidth="202.7294921875">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="25.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Password :" textAlignment="CENTER" wrappingWidth="216.7294921875">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="32.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Password :" textAlignment="CENTER" wrappingWidth="202.7294921875">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="25.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password :" textAlignment="CENTER" wrappingWidth="216.7294921875">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="651.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Email :" textAlignment="CENTER" wrappingWidth="216.7294921875">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="651.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Phone :" textAlignment="CENTER" wrappingWidth="216.7294921875">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="651.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Address :" textAlignment="CENTER" wrappingWidth="216.7294921875">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="586.0" layoutY="673.0" onAction="#done" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #00c6ed;" text="Done" />
+   </children>
+</AnchorPane>

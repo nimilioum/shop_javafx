@@ -64,6 +64,12 @@ begin
     select * from shop_staff where username = in_username and password = SHA2(in_password, 256) limit 1;
 end;
 
+drop procedure if exists findShopStaffById;
+create procedure findShopStaffById(in userId integer)
+begin
+    select * from shop_staff where id = userId limit 1;
+end;
+
 
 
 # unique fields check

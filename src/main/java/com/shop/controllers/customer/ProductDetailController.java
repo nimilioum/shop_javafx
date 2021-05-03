@@ -1,4 +1,4 @@
-package com.shop.controllers;
+package com.shop.controllers.customer;
 
 import com.jfoenix.controls.JFXButton;
 import com.shop.core.Item;
@@ -13,9 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
-public class CustomerProductDetailController {
+public class ProductDetailController {
     Product product;
 
     public void setProduct(Product product) throws Exception {

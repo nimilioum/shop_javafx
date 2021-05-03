@@ -17,6 +17,7 @@ public class Order implements DBModel {
     private int status;
 
     private Customer customer;
+    private String customerName;
     private DeliveryStaff deliverer;
     private Connection connection = null;
 
@@ -24,10 +25,21 @@ public class Order implements DBModel {
         this.creationDate = new Date();
         this.status = 0;
         this.customer = customer;
+        customerName = customer.getFname() + " " + customer.getLname();
         connection = DBModel.setConnection();
     }
 
     public Order(ResultSet query) throws Exception {
+        this.id = query.getLong("id");
+        this.creationDate = new SimpleDateFormat("yyyy-MM-dd").parse(query.getString("creation_date"));
+        this.status = query.getInt("status");
+        if (status == 2)
+        this.deliveryDate = new SimpleDateFormat("yyyy-MM-dd").parse(query.getString("delivery_date"));
+        this.totalPrice = query.getDouble("price");
+        this.customer = Customer.find(query.getLong("customer_id"));
+        customerName = customer.getFname() + " " + customer.getLname();
+        this.deliverer = DeliveryStaff.find(query.getLong("deliver_id"));
+
         connection = DBModel.setConnection();
     }
 
@@ -88,7 +100,13 @@ public class Order implements DBModel {
         this.deliverer = deliverer;
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
 
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 
     @Override
     public void save() throws Exception {
@@ -119,5 +137,33 @@ public class Order implements DBModel {
     @Override
     public void delete() throws Exception {
 
+    }
+
+    public ArrayList<Item> getItems() throws Exception {
+        return Item.getOrderItems(this);
+    }
+
+    public static ArrayList<Order> getCustomerOrders(Customer customer) throws Exception {
+        String query = "call getCustomerOrders(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        statement.setLong("userId", customer.getId());
+
+        ResultSet resultSet = statement.executeQuery();
+        ArrayList<Order> orders = new ArrayList<>();
+
+        while (resultSet.next()) orders.add(new Order(resultSet));
+        return orders;
+    }
+
+    public static ArrayList<Order> getAllOrders() throws Exception {
+        String query = "call getAllOrders()";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        ResultSet resultSet = statement.executeQuery();
+        ArrayList<Order> orders = new ArrayList<>();
+
+        while (resultSet.next()) orders.add(new Order(resultSet));
+        return orders;
     }
 }

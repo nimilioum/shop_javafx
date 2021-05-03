@@ -21,14 +21,15 @@
     -fx-background-color: #7cebfc;
 }
 
-.button {
+.main-button {
     -fx-font-family: Arial;
     -fx-font-size: 19;
 }
 
-.button:focused {
+.main-button:focused {
     -fx-background-color: #7cebfc;
 }
+
 
 .product-pane {
     -fx-background-radius : 10;
@@ -42,6 +43,21 @@
 }
 
 .product-pane:selected {
+
+}
+
+.order-pane {
+    -fx-background-radius : 10;
+    -fx-border-radius: 10;
+    -fx-background-color:  #c5fcfc;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3),5, 0.5, 0.0, 0.0);
+}
+
+.order-pane:hover {
+    -fx-background-color: #d4fcfc;
+}
+
+.order-pane:selected {
 
 }
 
@@ -82,7 +98,50 @@
     -fx-fill-height: 40px;
 }
 
+.account-button {
+    -fx-font-size: 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3),3, 0.3, 0.0, 0.0);
+}
 
+.log-button {
+    -fx-font-size: 14;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #00c6ed;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view {
+    -fx-border-color: #000000;
+    /*-fx-background-radius: 15;*/
+    /*-fx-border-radius: 15;*/
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #c9c9c9;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #ededed;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #faf7f7;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #c9c9c9;
+    -fx-text-fill: black;
+}
+
+
+.table-view .table-cell {
+    -fx-alignment: center;
+}
 
 /*.search-field {*/
 /*    -fx-background-radius: 10px;*/

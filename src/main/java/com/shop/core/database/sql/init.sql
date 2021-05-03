@@ -76,7 +76,7 @@ create table if not exists orders (
 
     creation_date text ,
     delivery_date text,
-    price integer not null ,
+    price double not null ,
     status integer not null ,
     constraint chk check ( status in (0,1,2) ),
 
@@ -115,7 +115,6 @@ begin
 end;
 
 
-drop procedure if exists insertOrderItem;
 
 
 
@@ -161,9 +160,22 @@ begin
     select * from orders where customer_id = userId;
 end;
 
-drop procedure if exists getOrderProducts;
-create procedure getOrderProducts(in orderId integer)
+drop procedure if exists getAllOrders;
+create procedure getAllOrders()
 begin
-    select id, op.product_name  as name, op.product_price as price, count , sales, image_path
-    from product join order_item op on op.order_id = orderId;
+    select * from orders order by -id;
 end;
+
+drop procedure if exists getUndoneOrders;
+create procedure getUndoneOrders()
+begin
+    select * from orders where status != 2;
+end;
+
+
+drop procedure if exists getOrderItems;
+create procedure getOrderItems(in orderId integer)
+begin
+    select * from item where order_id = orderId;
+end;
+

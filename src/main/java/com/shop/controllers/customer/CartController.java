@@ -1,9 +1,10 @@
-package com.shop.controllers;
+package com.shop.controllers.customer;
 
+import com.jfoenix.controls.JFXButton;
 import com.shop.App;
+import com.shop.controllers.TemplateController;
 import com.shop.core.Item;
 import com.shop.core.Order;
-import com.shop.core.Product;
 import com.shop.core.users.Customer.Customer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,8 @@ public class CartController {
     public static ArrayList<Item> items = new ArrayList<>();
 
     public void initialize() throws Exception {
+        if (TemplateController.user == null) buyButton.setDisable(true);
+
         productBox.getChildren().clear();
         for (Item item : items) {
             addItem(item);
@@ -25,7 +28,7 @@ public class CartController {
     }
 
     private void addItem(Item item) throws Exception {
-        FXMLLoader loader = App.getFXML("cartItem");
+        FXMLLoader loader = App.getFXML("customer/cartItem");
         loader.load();
         AnchorPane newPane = loader.getRoot();
         CartItemController controller = loader.getController();
@@ -45,12 +48,17 @@ public class CartController {
     private Text total;
 
     @FXML
+    private JFXButton buyButton;
+
+    @FXML
     void buy(ActionEvent event) throws Exception {
         Order order = new Order((Customer) TemplateController.user);
+        order.setTotalPrice(Double.parseDouble(total.getText()));
         order.save();
         order.addItems(items);
 
         clear();
+        TemplateController.alertSuccess("Purchase completed!");
     }
 
     @FXML
@@ -62,8 +70,6 @@ public class CartController {
         items.clear();
         productBox.getChildren().clear();
         total.setText("0");
-
-        TemplateController.alertSuccess("Purchase completed!");
     }
 
 }

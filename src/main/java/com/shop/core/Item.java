@@ -2,10 +2,8 @@ package com.shop.core;
 
 import com.shop.core.database.DBModel;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Types;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class Item implements DBModel {
     private long id;
@@ -21,6 +19,8 @@ public class Item implements DBModel {
     }
 
     public Item(ResultSet query) throws Exception {
+        this.count = query.getInt("count");
+        this.product = Product.find(query.getLong("product_id"));
 
         connection = DBModel.setConnection();
     }
@@ -70,7 +70,19 @@ public class Item implements DBModel {
         statement.executeUpdate();
         setId(statement.getLong("id"));
 
-        product.setCount(product.getCount() - count);
+        product.productBought(count);
+    }
+
+    public static ArrayList<Item> getOrderItems(Order order) throws Exception {
+        String query = "call getOrderItems(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        statement.setLong("orderId", order.getId());
+        ResultSet result = statement.executeQuery();
+        ArrayList<Item> items = new ArrayList<>();
+        while (result.next()) items.add(new Item(result));
+
+        return items;
     }
 
     @Override

@@ -1,11 +1,15 @@
 package com.shop.controllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import com.shop.App;
 import com.shop.core.users.Customer.Customer;
 import com.shop.core.users.Person;
+import com.shop.core.users.Staff.DeliveryStaff;
+import com.shop.core.users.Staff.ShopStaff;
+import com.shop.core.users.Staff.Staff;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,7 +28,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class TemplateController implements Initializable {
+public class TemplateController {
     public static AnchorPane cPane;
 
     public static StackPane stPane;
@@ -39,22 +43,21 @@ public class TemplateController implements Initializable {
     private AnchorPane pane;
 
     @FXML
-    private MenuButton menuButtton;
+    private MenuButton menuButton;
 
     @FXML
     private AnchorPane userDetails;
 
     @FXML
+    private JFXButton cartButton;
+
+
+    @FXML
     private AnchorPane content;
 
     @FXML
-    void getAccountPage(ActionEvent event) {
-
-    }
-
-    @FXML
-    void getCartPage(ActionEvent event) throws Exception {
-        FXMLLoader loader = App.getFXML("cart");
+    void getAccountPage(ActionEvent event) throws Exception {
+        FXMLLoader loader = App.getFXML("customer/account");
         loader.load();
         AnchorPane newPane = loader.getRoot();
         content.getChildren().clear();
@@ -63,7 +66,22 @@ public class TemplateController implements Initializable {
     }
 
     @FXML
-    void getCategoriesPage(ActionEvent event) throws IOException {
+    void getCartPage(ActionEvent event) throws Exception {
+        FXMLLoader loader = null;
+        if (user instanceof Customer)
+            loader = App.getFXML("customer/cart");
+        else if (user instanceof ShopStaff)
+            loader = App.getFXML("admin/orders");
+
+        loader.load();
+        AnchorPane newPane = loader.getRoot();
+        content.getChildren().clear();
+        content.getChildren().add(newPane);
+        content.toBack();
+    }
+
+    @FXML
+    void getCategoriesPage(ActionEvent event) throws Exception {
         FXMLLoader loader = App.getFXML("categoriesList");
         loader.load();
         AnchorPane newPane = loader.getRoot();
@@ -83,17 +101,41 @@ public class TemplateController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    public void initialize() throws Exception {
+
+        if (user instanceof Staff) cartButton.setText("Orders");
+        if (user instanceof DeliveryStaff) cartButton.setDisable(true);
+
         cPane = content;
         aPane = pane;
         stPane = stackPane;
-        try {
-            user = Customer.find("nima", "saei");
-        } catch (Exception e) {
-            e.printStackTrace();
+
+//        user = Customer.find("nima", "saei");
+        user = ShopStaff.find("nima", "saei");
+        if (user != null) {
+            FXMLLoader loader = App.getFXML("authUser");
+            loader.load();
+            AnchorPane newPane = loader.getRoot();
+            userDetails.getChildren().clear();
+            userDetails.getChildren().add(newPane);
         }
+
+        else {
+            FXMLLoader loader = App.getFXML("notAuthUser");
+            loader.load();
+            AnchorPane newPane = loader.getRoot();
+            userDetails.getChildren().clear();
+            userDetails.getChildren().add(newPane);
+        }
+
+
+
     }
+
+
+
+
 
     public static void alertError(String msg) {
         BoxBlur blur = new BoxBlur(3, 3, 3);

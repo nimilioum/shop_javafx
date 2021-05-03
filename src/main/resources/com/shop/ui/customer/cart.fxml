@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.CartController">
+<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.customer.CartController">
    <children>
       <ScrollPane layoutY="86.0" prefHeight="662.0" prefWidth="1282.0">
          <content>
@@ -20,7 +20,7 @@
          </content>
       </ScrollPane>
       <JFXButton layoutX="1132.0" layoutY="18.0" onAction="#delete" prefHeight="43.0" prefWidth="128.0" style="-fx-background-color: #ff0000;" text="Delete all" />
-      <JFXButton layoutX="23.0" layoutY="18.0" onAction="#buy" prefHeight="43.0" prefWidth="128.0" style="-fx-background-color: #00fff2;" text="Buy" />
+      <JFXButton fx:id="buyButton" layoutX="23.0" layoutY="18.0" onAction="#buy" prefHeight="43.0" prefWidth="128.0" style="-fx-background-color: #00fff2;" text="Buy" />
       <Text layoutX="431.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price :" wrappingWidth="157.5654296875">
          <font>
             <Font name="Arial" size="26.0" />

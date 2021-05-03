@@ -4,12 +4,21 @@ import com.shop.core.database.DBModel;
 
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Types;
 
 public class DeliveryStaff extends Staff{
+
     public DeliveryStaff(String fname, String lname, String email, String username, String password, String nc,
                          String phoneNumber) throws Exception {
         super(fname, lname, email, username, password, nc, phoneNumber);
+    }
+
+    public DeliveryStaff(ResultSet result) throws Exception {
+        this(result.getString("first_name"), result.getString("last_name"),
+                result.getString("email"), result.getString("username"),
+                result.getString("password"), result.getString("nc"), result.getString("phone_number"));
+        setId(result.getLong("id"));
     }
 
     @Override
@@ -40,10 +49,21 @@ public class DeliveryStaff extends Staff{
         ResultSet result = statement.executeQuery();
         DeliveryStaff staff = null;
         if (result.next()) {
-            staff = new DeliveryStaff(result.getString("first_name"), result.getString("last_name"),
-                    result.getString("email"), result.getString("username"),
-                    result.getString("password"), result.getString("nc"), result.getString("phone_number"));
-            staff.setId(result.getLong("id"));
+            staff = new DeliveryStaff(result);
+        }
+        return staff;
+    }
+
+    public static DeliveryStaff find(long id) throws Exception {
+        String query = "call findDeliveryStaffById(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        statement.setLong("userId", id);
+
+        ResultSet result = statement.executeQuery();
+        DeliveryStaff staff = null;
+        if (result.next()) {
+            staff = new DeliveryStaff(result);
         }
         return staff;
     }

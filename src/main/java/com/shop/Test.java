@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) throws Exception {
-        Customer customer = new Customer("nima", "saei", "a@a.co", "nima", "saei");
+        ShopStaff customer = new ShopStaff("nima", "saei", "a@a.co", "nima", "saei",
+                "1234567890", "09101112233");
         customer.save();
 //        Customer customer = Customer.find("nima", "saei");
 //        System.out.println(customer.getEmail());

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="productPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" styleClass="product-pane" stylesheets="@css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.CartItemController">
+<AnchorPane fx:id="productPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" styleClass="product-pane" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.customer.CartItemController">
    <children>
       <ImageView fx:id="image" fitHeight="173.0" fitWidth="207.0" layoutX="32.0" layoutY="14.0" pickOnBounds="true" />
       <Text fx:id="name" layoutX="264.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="318.7294921875">

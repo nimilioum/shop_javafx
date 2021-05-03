@@ -51,7 +51,7 @@ public class Product implements DBModel {
 
     public void setSales(long sales) throws SQLException {
         this.sales = sales;
-        updateSales();
+//        updateSales();
     }
 
     public long getId() {
@@ -87,6 +87,12 @@ public class Product implements DBModel {
     public void setCount(long count) throws Exception {
         this.count = count;
         updateCount();
+    }
+
+    public void productBought(long count) throws Exception {
+        this.count -= count;
+        updateCount();
+        updateSales(count);
     }
 
     public String getDescription() {
@@ -175,6 +181,20 @@ public class Product implements DBModel {
         CallableStatement statement = DBModel.setConnection().prepareCall(query);
 
         statement.setString("in_name", name);
+
+        ResultSet resultSet = statement.executeQuery();
+        Product product = null;
+        if (resultSet.next()) product = new Product(resultSet);
+
+        statement.close();
+        return product;
+    }
+
+    public static Product find(long id) throws Exception {
+        String query = "call getProductById(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        statement.setLong("productId", id);
 
         ResultSet resultSet = statement.executeQuery();
         Product product = null;
@@ -284,11 +304,12 @@ public class Product implements DBModel {
         statement.close();
     }
 
-    private void updateSales() throws SQLException {
-        String query = "call updateProductSales(?)";
+    private void updateSales(long count) throws SQLException {
+        String query = "call updateProductSales(?, ?)";
         CallableStatement statement = connection.prepareCall(query);
 
         statement.setLong("productId", id);
+        statement.setLong("in_count", count);
 
         statement.executeUpdate();
         statement.close();

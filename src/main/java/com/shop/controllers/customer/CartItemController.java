@@ -1,6 +1,7 @@
-package com.shop.controllers;
+package com.shop.controllers.customer;
 
 import com.shop.App;
+import com.shop.controllers.TemplateController;
 import com.shop.core.Item;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 
 public class CartItemController {
     private Item item;
@@ -25,10 +25,10 @@ public class CartItemController {
             public void handle(MouseEvent mouseEvent) {
 
                 try {
-                    FXMLLoader loader = App.getFXML("customerProductDetail");
+                    FXMLLoader loader = App.getFXML("customer/productDetail");
                     loader.load();
                     AnchorPane newPane = loader.getRoot();
-                    CustomerProductDetailController controller = loader.getController();
+                    ProductDetailController controller = loader.getController();
                     controller.setProduct(item.getProduct());
                     TemplateController.cPane.getChildren().clear();
                     TemplateController.cPane.getChildren().add(newPane);

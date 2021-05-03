@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="orderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" styleClass="order-pane" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.customer.OrderController">
+   <children>
+      <Text layoutX="25.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order code :" wrappingWidth="209.7294921875">
+         <font>
+            <Font name="Arial" size="35.0" />
+         </font>
+      </Text>
+      <Text fx:id="code" layoutX="235.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="119.7294921875">
+         <font>
+            <Font name="Arial" size="35.0" />
+         </font>
+      </Text>
+      <Text layoutX="38.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date ordered :" wrappingWidth="182.1015625">
+         <font>
+            <Font name="Arial" size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="orderDate" layoutX="235.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-----" textAlignment="CENTER" wrappingWidth="159.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="619.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price :">
+         <font>
+            <Font name="Arial" size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="price" layoutX="615.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="143.7294921875">
+         <font>
+            <Font name="Arial" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="36.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date delivered :">
+         <font>
+            <Font name="Arial" size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="deliverDate" layoutX="235.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-----" textAlignment="CENTER" wrappingWidth="159.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

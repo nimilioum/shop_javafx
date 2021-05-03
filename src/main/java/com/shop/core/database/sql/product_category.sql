@@ -56,9 +56,9 @@ end;
 
 
 drop procedure if exists updateProductSales;
-create procedure updateProductSales(in productId integer)
+create procedure updateProductSales(in productId integer, in in_count integer)
 begin
-    update product set sales = sales + 1 where  id = productId;
+    update product set sales = sales + in_count where  id = productId;
 end;
 
 
@@ -105,6 +105,12 @@ drop procedure if exists findProduct;
 create procedure findProduct(in in_name text)
 begin
     select * from product where name = in_name;
+end;
+
+drop procedure if exists getProductById;
+create procedure getProductById(in productId integer)
+begin
+    select * from product where id = productId;
 end;
 
 drop procedure if exists getProduct;

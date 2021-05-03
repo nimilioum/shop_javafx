@@ -1,7 +1,10 @@
 package com.shop.controllers;
 
 import com.shop.App;
+import com.shop.controllers.customer.ProductDetailController;
 import com.shop.core.Product;
+import com.shop.core.users.Customer.Customer;
+import com.shop.core.users.Staff.ShopStaff;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,14 +25,26 @@ public class ProductController {
             public void handle(MouseEvent mouseEvent) {
 
                 try {
-                    FXMLLoader loader = App.getFXML("customerProductDetail");
-                    loader.load();
-                    AnchorPane newPane = loader.getRoot();
-                    CustomerProductDetailController controller = loader.getController();
-                    controller.setProduct(product);
-                    TemplateController.cPane.getChildren().clear();
-                    TemplateController.cPane.getChildren().add(newPane);
-                    TemplateController.cPane.toBack();
+                    if (TemplateController.user instanceof Customer) {
+                        FXMLLoader loader = App.getFXML("customer/productDetail");
+                        loader.load();
+                        AnchorPane newPane = loader.getRoot();
+                        ProductDetailController controller = loader.getController();
+                        controller.setProduct(product);
+                        TemplateController.cPane.getChildren().clear();
+                        TemplateController.cPane.getChildren().add(newPane);
+                        TemplateController.cPane.toBack();
+                    }
+                    else if (TemplateController.user instanceof ShopStaff) {
+                        FXMLLoader loader = App.getFXML("admin/productDetail");
+                        loader.load();
+                        AnchorPane newPane = loader.getRoot();
+                        com.shop.controllers.admin.ProductDetailController controller = loader.getController();
+                        controller.setProduct(product);
+                        TemplateController.cPane.getChildren().clear();
+                        TemplateController.cPane.getChildren().add(newPane);
+                        TemplateController.cPane.toBack();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

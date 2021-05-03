@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" stylesheets="@css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.NotAuthUserController">
+   <children>
+      <Text layoutX="42.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are not logged in" textAlignment="CENTER" wrappingWidth="117.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="56.0" layoutY="229.0" onAction="#register" prefHeight="34.0" prefWidth="89.0" style="-fx-background-color: #fa005c; -fx-font-size: 13;" text="Register" />
+      <JFXButton layoutX="56.0" layoutY="173.0" onAction="#login" prefHeight="34.0" prefWidth="89.0" style="-fx-background-color: #fa005c; -fx-font-size: 13;" text="Login" />
+   </children>
+</AnchorPane>

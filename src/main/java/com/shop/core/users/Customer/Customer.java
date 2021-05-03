@@ -12,9 +12,19 @@ import java.sql.Types;
 public class Customer extends Person implements CustomerDBModel {
     private String address;
     String phoneNumber;
+
     public Customer(String fname, String lname, String email, String username, String password) throws Exception {
         super(fname, lname, email, username, password);
         connection = DBModel.setConnection();
+    }
+
+    public Customer(ResultSet result) throws Exception {
+        this(result.getString("first_name"), result.getString("last_name"),
+                result.getString("email"),
+                result.getString("username"), result.getString("password"));
+        setPhoneNumber(result.getString("phone_number"));
+        setAddress("address");
+        setId(result.getLong("id"));
     }
 
     public String getAddress() {
@@ -61,12 +71,21 @@ public class Customer extends Person implements CustomerDBModel {
         ResultSet result = statement.executeQuery();
         Customer customer = null;
         if (result.next()) {
-            customer = new Customer(result.getString("first_name"), result.getString("last_name"),
-                    result.getString("email"),
-                    result.getString("username"), result.getString("password"));
-            customer.setPhoneNumber(result.getString("phone_number"));
-            customer.setAddress("address");
-            customer.setId(result.getLong("id"));
+            customer = new Customer(result);
+        }
+        return customer;
+    }
+
+    public static Customer find(long id) throws Exception {
+        String query = "call findCustomerById(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        statement.setLong("userId", id);
+
+        ResultSet result = statement.executeQuery();
+        Customer customer = null;
+        if (result.next()) {
+            customer = new Customer(result);
         }
         return customer;
     }
@@ -162,5 +181,10 @@ public class Customer extends Person implements CustomerDBModel {
 
         statement.setString("in_phone", email);
         return statement.executeQuery().next();
+    }
+
+    @Override
+    public String toString() {
+        return getFname() + " " + getLname();
     }
 }

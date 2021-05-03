@@ -56,6 +56,12 @@ begin
     select * from inventory_staff where username = in_username and password = SHA2(in_password, 256) limit 1;
 end;
 
+drop procedure if exists findInventoryStaffById;
+create procedure findInventoryStaffById(in userId integer)
+begin
+    select * from inventory_staff where id = userId limit 1;
+end;
+
 
 # unique fields check
 
