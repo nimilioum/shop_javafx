@@ -9,6 +9,7 @@ module com.shop {
     opens com.shop to javafx.fxml;
     opens com.shop.controllers to javafx.base, javafx.fxml;
     opens com.shop.controllers.admin to javafx.base, javafx.fxml;
+    opens com.shop.controllers.inventoryStaff to javafx.base, javafx.fxml;
     opens com.shop.core to javafx.base;
 
     exports com.shop;

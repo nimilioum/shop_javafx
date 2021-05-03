@@ -72,8 +72,9 @@ public class Order implements DBModel {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(int status) throws Exception {
         this.status = status;
+        updateStatus();
     }
 
     public double getTotalPrice() {
@@ -96,8 +97,9 @@ public class Order implements DBModel {
         return deliverer;
     }
 
-    public void setDeliverer(DeliveryStaff deliverer) {
+    public void setDeliverer(DeliveryStaff deliverer) throws Exception {
         this.deliverer = deliverer;
+        updateDeliverer();
     }
 
     public String getCustomerName() {
@@ -132,6 +134,36 @@ public class Order implements DBModel {
             item.save();
         }
 
+    }
+
+    private void updateStatus() throws SQLException {
+        String query = "call updateOrderStatus(?, ?)";
+        CallableStatement statement = connection.prepareCall(query);
+
+        statement.setInt("in_status", status);
+        statement.setLong("orderId", id);
+
+        statement.executeUpdate();
+    }
+
+    private void updateDeliverer() throws SQLException {
+        String query = "call updateOrderDeliverer(?, ?)";
+        CallableStatement statement = connection.prepareCall(query);
+
+        statement.setLong("in_deliver", deliverer.getId());
+        statement.setLong("orderId", id);
+
+        statement.executeUpdate();
+    }
+
+    private void updateDeliverDate() throws SQLException {
+        String query = "call updateOrderDeliverDate(?, ?)";
+        CallableStatement statement = connection.prepareCall(query);
+
+        statement.setString("in_date", new SimpleDateFormat("yyyy-MM-dd").format(deliveryDate));
+        statement.setLong("orderId", id);
+
+        statement.executeUpdate();
     }
 
     @Override

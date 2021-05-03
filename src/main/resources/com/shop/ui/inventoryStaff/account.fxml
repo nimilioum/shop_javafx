@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.inventoryStaff.AccountController">
+   <children>
+      <JFXButton graphicTextGap="30.0" layoutX="384.0" layoutY="48.0" onAction="#getSettingsPage" prefHeight="143.0" prefWidth="569.0" ripplerFill="#5cf5eb" style="-fx-background-color: #9bfaf5;" styleClass="account-button" text="Settings" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="40.0" />
+         </font>
+      </JFXButton>
+      <JFXButton graphicTextGap="30.0" layoutX="384.0" layoutY="304.0" onAction="#getAddProductPage" prefHeight="143.0" prefWidth="569.0" ripplerFill="#5cf5eb" style="-fx-background-color: #9bfaf5;" styleClass="account-button" text="Add Product" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="40.0" />
+         </font>
+      </JFXButton>
+      <JFXButton graphicTextGap="30.0" layoutX="384.0" layoutY="570.0" onAction="#getAddCategoryPage" prefHeight="143.0" prefWidth="569.0" ripplerFill="#5cf5eb" style="-fx-background-color: #9bfaf5;" styleClass="account-button" text="Add Category" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="40.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

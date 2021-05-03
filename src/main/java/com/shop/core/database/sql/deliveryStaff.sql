@@ -50,6 +50,11 @@ end;
 # select statements
 # ----------------------------------------------------------------------------------------
 
+drop procedure if exists getAllDeliveryStaffs;
+create procedure getAllDeliveryStaffs()
+begin
+    select * from delivery_staff;
+end;
 
 drop procedure if exists findDeliveryStaff;
 create procedure findDeliveryStaff(in in_username text, in in_password text)
@@ -72,20 +77,20 @@ end;
 drop procedure if exists deliveryStaffUsernameExists;
 create procedure deliveryStaffUsernameExists(in in_username text)
 begin
-    select COUNT(*) from delivery_staff where username = in_username;
+    select * from delivery_staff where username = in_username;
 end;
 
 
 drop procedure if exists deliveryStaffEmailExists;
 create procedure deliveryStaffEmailExists(in in_email text)
 begin
-    select COUNT(*) from delivery_staff where email = in_email;
+    select * from delivery_staff where email = in_email;
 end;
 
 
 drop procedure if exists deliveryStaffPhoneExists;
 create procedure deliveryStaffPhoneExists(in in_phone text)
 begin
-    select COUNT(*) from delivery_staff where phone_number = in_phone;
+    select * from delivery_staff where phone_number = in_phone;
 end;
 

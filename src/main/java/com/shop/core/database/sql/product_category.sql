@@ -160,3 +160,11 @@ begin
     select id from category where name = inName into categoryId;
     select searchProduct(inName) union select getProductsByCategory(categoryId);
 end;
+
+
+
+drop procedure if exists categoryNameExists;
+create procedure categoryNameExists(in productName text)
+begin
+    select * from category where name = productName;
+end;

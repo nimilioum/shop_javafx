@@ -76,17 +76,17 @@ end;
 drop procedure if exists customerUsernameExists;
 create procedure customerUsernameExists(in in_username text)
 begin
-    select COUNT(*) from customer where username = in_username;
+    select * from customer where username = in_username;
 end;
 
 drop procedure if exists customerEmailExists;
 create procedure customerEmailExists(in in_email text)
 begin
-    select COUNT(*) from customer where email = in_email;
+    select * from customer where email = in_email;
 end;
 
 drop procedure if exists customerPhoneExists;
 create procedure customerPhoneExists(in in_phone text)
 begin
-    select COUNT(*) from customer where phone_number = in_phone;
+    select * from customer where phone_number = in_phone;
 end;

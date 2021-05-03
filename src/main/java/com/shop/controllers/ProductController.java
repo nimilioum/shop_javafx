@@ -4,6 +4,7 @@ import com.shop.App;
 import com.shop.controllers.customer.ProductDetailController;
 import com.shop.core.Product;
 import com.shop.core.users.Customer.Customer;
+import com.shop.core.users.Staff.InventoryStaff;
 import com.shop.core.users.Staff.ShopStaff;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -40,6 +41,16 @@ public class ProductController {
                         loader.load();
                         AnchorPane newPane = loader.getRoot();
                         com.shop.controllers.admin.ProductDetailController controller = loader.getController();
+                        controller.setProduct(product);
+                        TemplateController.cPane.getChildren().clear();
+                        TemplateController.cPane.getChildren().add(newPane);
+                        TemplateController.cPane.toBack();
+                    }
+                    else if (TemplateController.user instanceof InventoryStaff) {
+                        FXMLLoader loader = App.getFXML("inventoryStaff/productDetail");
+                        loader.load();
+                        AnchorPane newPane = loader.getRoot();
+                        com.shop.controllers.inventoryStaff.ProductDetailController controller = loader.getController();
                         controller.setProduct(product);
                         TemplateController.cPane.getChildren().clear();
                         TemplateController.cPane.getChildren().add(newPane);

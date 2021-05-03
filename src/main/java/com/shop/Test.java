@@ -3,6 +3,7 @@ package com.shop;
 import com.shop.core.Category;
 import com.shop.core.Product;
 import com.shop.core.users.Customer.Customer;
+import com.shop.core.users.Staff.DeliveryStaff;
 import com.shop.core.users.Staff.InventoryStaff;
 import com.shop.core.users.Staff.ShopStaff;
 
@@ -10,9 +11,18 @@ import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) throws Exception {
-        ShopStaff customer = new ShopStaff("nima", "saei", "a@a.co", "nima", "saei",
+//        ShopStaff customer = new ShopStaff("nima", "saei", "a@a.co", "nima", "saei",
+//                "1234567890", "09101112233");
+//        customer.save();
+
+//        InventoryStaff customer = new InventoryStaff("nima", "saei", "a@a.co", "nima", "saei",
+//                "1234567890", "09101112233");
+//        customer.save();
+
+        DeliveryStaff customer = new DeliveryStaff("nima", "saei", "a@a.co", "nima", "saei",
                 "1234567890", "09101112233");
         customer.save();
+
 //        Customer customer = Customer.find("nima", "saei");
 //        System.out.println(customer.getEmail());
 //        InventoryStaff staff1 = new InventoryStaff("nima", "saei", "a@a.co", "nima", "saei",

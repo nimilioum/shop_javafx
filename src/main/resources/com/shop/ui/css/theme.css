@@ -143,6 +143,20 @@
     -fx-alignment: center;
 }
 
+
+.combo-box-popup .list-cell {
+    -fx-font-size: 16;
+}
+
+.category-list-view .list-cell:selected {
+    -fx-background-color: #defdff;
+    -fx-border-color: #005ea1;
+}
+
+.category-list-view .list-cell {
+    -fx-font-size: 20;
+}
+
 /*.search-field {*/
 /*    -fx-background-radius: 10px;*/
 /*    -fx-border-radius: 10px;*/

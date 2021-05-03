@@ -42,7 +42,7 @@ public class Product implements DBModel {
 
     public void setImagePath(String imagePath) throws SQLException {
         this.imagePath = imagePath;
-        updateImage();
+        if (id != 0) updateImage();
     }
 
     public long getSales() {
@@ -119,9 +119,6 @@ public class Product implements DBModel {
         statement.executeUpdate();
 
         setId(statement.getLong("id"));
-//        ResultSet keys =statement.getGeneratedKeys();
-//        System.out.println(keys.next());
-//        setId(keys.getLong(1));
         statement.close();
     }
 

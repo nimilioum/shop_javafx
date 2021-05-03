@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.effect.DropShadow?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.inventoryStaff.ProductDetailController">
+<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.customer.ProductDetailController">
    <children>
       <AnchorPane layoutX="52.0" layoutY="35.0" prefHeight="340.0" prefWidth="1201.0" style="-fx-background-color: #f5f7f7; -fx-background-radius: 5;">
          <children>
@@ -20,24 +19,18 @@
                   <Font name="Arial" size="50.0" />
                </font>
             </Text>
-            <Spinner fx:id="amount" editable="true" layoutX="1000.0" layoutY="121.0" prefHeight="39.0" prefWidth="181.0">
+            <Text fx:id="price" layoutX="396.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="price" wrappingWidth="525.7294921875">
+               <font>
+                  <Font name="Arial" size="41.0" />
+               </font>
+            </Text>
+            <Spinner fx:id="amount" editable="true" layoutX="983.0" layoutY="214.0" prefHeight="39.0" prefWidth="181.0">
                <styleClass>
                   <String fx:value="split-arrows-horizontal" />
                   <String fx:value="spinner" />
                </styleClass>
             </Spinner>
-            <JFXButton layoutX="1000.0" layoutY="280.0" onAction="#saveChanges" prefHeight="46.0" prefWidth="181.0" style="-fx-background-color: #00c4de;" text="Save Changes" />
-            <JFXButton layoutX="404.0" layoutY="280.0" onAction="#changePhoto" prefHeight="46.0" prefWidth="181.0" style="-fx-background-color: #00c4de;" text="Change Image" />
-            <JFXTextField fx:id="price" layoutX="396.0" layoutY="141.0" prefHeight="56.0" prefWidth="526.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXTextField>
-            <Text layoutX="1007.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="count" textAlignment="CENTER" wrappingWidth="167.7294921875">
-               <font>
-                  <Font name="Arial" size="40.0" />
-               </font>
-            </Text>
+            <JFXButton fx:id="buy" layoutX="983.0" layoutY="268.0" onAction="#addToCart" prefHeight="46.0" prefWidth="181.0" style="-fx-background-color: #00c4de;" text="Add to cart" />
          </children>
          <effect>
             <DropShadow />

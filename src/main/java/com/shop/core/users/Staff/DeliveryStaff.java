@@ -6,6 +6,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 
 public class DeliveryStaff extends Staff{
 
@@ -66,6 +67,18 @@ public class DeliveryStaff extends Staff{
             staff = new DeliveryStaff(result);
         }
         return staff;
+    }
+
+    public static ArrayList<DeliveryStaff> getAll() throws Exception {
+        String query = "call getAllDeliveryStaffs()";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        ResultSet result = statement.executeQuery();
+        ArrayList<DeliveryStaff> staffs = new ArrayList<>();
+        while (result.next()) {
+            staffs.add(new DeliveryStaff(result));
+        }
+        return staffs;
     }
 
     @Override
@@ -147,5 +160,19 @@ public class DeliveryStaff extends Staff{
 
         statement.setString("in_phone", email);
         return statement.executeQuery().next();
+    }
+
+    @Override
+    public String toString() {
+        return getFname() + " " + getLname();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof DeliveryStaff) {
+            DeliveryStaff obj2 = (DeliveryStaff) obj;
+            return obj2.getId() == id;
+        }
+        return false;
     }
 }

@@ -53,12 +53,14 @@ public class ProductDetailController {
     void changePhoto(ActionEvent event) throws Exception {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(new Stage());
-        String path = "images/";
-        Files.copy(file.toPath(), new File(path + file.getName()).toPath(),
-                StandardCopyOption.REPLACE_EXISTING);
+        if (file != null) {
+            String path = "images/";
+            Files.copy(file.toPath(), new File(path + file.getName()).toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
 
-        product.setImagePath("images/" + file.getName());
-        image.setImage(new Image(new FileInputStream(product.getImagePath())));
+            product.setImagePath("images/" + file.getName());
+            image.setImage(new Image(new FileInputStream(product.getImagePath())));
+        }
     }
 
     @FXML

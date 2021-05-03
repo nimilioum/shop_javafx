@@ -104,6 +104,14 @@ public class Category implements DBModel {
         statement.close();
     }
 
+    public static boolean nameExists(String name) throws Exception {
+        String query = "call categoryNameExists(?)";
+        CallableStatement statement = DBModel.setConnection().prepareCall(query);
+
+        statement.setString("productName", name);
+        return statement.executeQuery().next();
+    }
+
     @Override
     public String toString() {
         return name;

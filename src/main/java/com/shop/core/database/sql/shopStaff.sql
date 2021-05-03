@@ -77,18 +77,18 @@ end;
 drop procedure if exists shopStaffUsernameExists;
 create procedure shopStaffUsernameExists(in in_username text)
 begin
-    select COUNT(*) from shop_staff where username = in_username;
+    select * from shop_staff where username = in_username;
 end;
 
 drop procedure if exists shopStaffEmailExists;
 create procedure shopStaffEmailExists(in in_email text)
 begin
-    select COUNT(*) from shop_staff where email = in_email;
+    select * from shop_staff where email = in_email;
 end;
 
 drop procedure if exists shopStaffPhoneExists;
 create procedure shopStaffPhoneExists(in in_phone text)
 begin
-    select COUNT(*) from shop_staff where phone_number = in_phone;
+    select * from shop_staff where phone_number = in_phone;
 end;
 

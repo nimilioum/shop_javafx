@@ -8,6 +8,7 @@ import com.shop.App;
 import com.shop.core.users.Customer.Customer;
 import com.shop.core.users.Person;
 import com.shop.core.users.Staff.DeliveryStaff;
+import com.shop.core.users.Staff.InventoryStaff;
 import com.shop.core.users.Staff.ShopStaff;
 import com.shop.core.users.Staff.Staff;
 import javafx.event.ActionEvent;
@@ -62,6 +63,8 @@ public class TemplateController {
             loader = App.getFXML("customer/account");
         else if (user instanceof ShopStaff)
             loader = App.getFXML("admin/account");
+        else if (user instanceof InventoryStaff)
+            loader = App.getFXML("inventoryStaff/account");
         loader.load();
         AnchorPane newPane = loader.getRoot();
         content.getChildren().clear();
@@ -76,6 +79,8 @@ public class TemplateController {
             loader = App.getFXML("customer/cart");
         else if (user instanceof ShopStaff)
             loader = App.getFXML("admin/orders");
+        else if (user instanceof InventoryStaff)
+            loader = App.getFXML("inventoryStaff/orders");
 
         loader.load();
         AnchorPane newPane = loader.getRoot();
@@ -116,7 +121,8 @@ public class TemplateController {
         stPane = stackPane;
 
 //        user = Customer.find("nima", "saei");
-        user = ShopStaff.find("nima", "saei");
+//        user = ShopStaff.find("nima", "saei");
+        user = InventoryStaff.find("nima", "saei");
         if (user != null) {
             FXMLLoader loader = App.getFXML("authUser");
             loader.load();

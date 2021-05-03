@@ -68,17 +68,17 @@ end;
 drop procedure if exists inventoryStaffUsernameExists;
 create procedure inventoryStaffUsernameExists(in in_username text)
 begin
-    select COUNT(*) from inventory_staff where username = in_username;
+    select * from inventory_staff where username = in_username;
 end;
 
 drop procedure if exists inventoryStaffEmailExists;
 create procedure inventoryStaffEmailExists(in in_email text)
 begin
-    select COUNT(*) from inventory_staff where email = in_email;
+    select * from inventory_staff where email = in_email;
 end;
 
 drop procedure if exists inventoryStaffPhoneExists;
 create procedure inventoryStaffPhoneExists(in in_phone text)
 begin
-    select COUNT(*) from inventory_staff where phone_number = in_phone;
+    select * from inventory_staff where phone_number = in_phone;
 end;
