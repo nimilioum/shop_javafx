@@ -179,7 +179,7 @@ public class Customer extends Person implements CustomerDBModel {
         String query = "call customerEmailExists(?)";
         CallableStatement statement = DBModel.setConnection().prepareCall(query);
 
-        statement.setString("in_phone", email);
+        statement.setString("in_email", email);
         return statement.executeQuery().next();
     }
 

@@ -11,11 +11,14 @@ import com.shop.core.users.Staff.DeliveryStaff;
 import com.shop.core.users.Staff.InventoryStaff;
 import com.shop.core.users.Staff.ShopStaff;
 import com.shop.core.users.Staff.Staff;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -23,6 +26,7 @@ import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +38,7 @@ public class TemplateController {
 
     public static StackPane stPane;
     private static AnchorPane aPane;
+    private static String btnText = "Cart";
 
     public static Person user = null;
 
@@ -55,6 +60,13 @@ public class TemplateController {
 
     @FXML
     private AnchorPane content;
+
+    public static void setUser(Person user) {
+        TemplateController.user = user;
+
+        if (user instanceof Staff) btnText = "Orders";
+        else btnText = "Cart";
+    }
 
     @FXML
     void getAccountPage(ActionEvent event) throws Exception {
@@ -120,7 +132,9 @@ public class TemplateController {
 //        user = Customer.find("nima", "saei");
 //        user = ShopStaff.find("nima", "saei");
 //        user = InventoryStaff.find("nima", "saei");
-        user = DeliveryStaff.find("nima", "saei");
+//        user = DeliveryStaff.find("nima", "saei");
+
+        cartButton.textProperty().bindBidirectional(new SimpleStringProperty(btnText));
 
         if (user instanceof Staff) cartButton.setText("Orders");
 
@@ -220,5 +234,50 @@ public class TemplateController {
         dialogLayout.setActions(btn);
         aPane.setEffect(blur);
         dialog.show();
+    }
+
+    public static void getRegisterPage() throws IOException {
+        FXMLLoader loader = App.getFXML("register");
+        Parent root = loader.load();
+        Stage stage = new Stage();
+
+        RegisterController controller = loader.getController();
+        controller.setStage(stage);
+
+        stage.setScene(new Scene(root, 1280, 750));
+        stage.show();
+    }
+
+    public static void getRegisterPage(Stage stage) throws IOException {
+        FXMLLoader loader = App.getFXML("register");
+        Parent root = loader.load();
+
+        RegisterController controller = loader.getController();
+        controller.setStage(stage);
+
+        stage.setScene(new Scene(root, 1280, 750));
+        stage.show();
+    }
+
+    public static void getLoginPage() throws IOException {
+        FXMLLoader loader = App.getFXML("login");
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        LoginController controller = loader.getController();
+        controller.setStage(stage);
+
+        stage.setScene(new Scene(root, 500, 700));
+        stage.show();
+    }
+
+    public static void getLoginPage(Stage stage) throws IOException {
+        FXMLLoader loader = App.getFXML("login");
+        Parent root = loader.load();
+
+        LoginController controller = loader.getController();
+        controller.setStage(stage);
+
+        stage.setScene(new Scene(root, 500, 700));
+        stage.show();
     }
 }

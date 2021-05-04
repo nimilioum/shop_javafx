@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.LoginController">
+   <children>
+      <JFXTextField fx:id="username" layoutX="205.0" layoutY="283.0" prefHeight="33.0" prefWidth="236.0" />
+      <Text layoutX="60.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User name :" wrappingWidth="125.7294921875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="67.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :" wrappingWidth="110.7294921875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="192.0" layoutY="497.0" onAction="#login" prefHeight="43.0" prefWidth="111.0" style="-fx-background-color: #00fcf4;" text="Login">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="userType" layoutX="152.0" layoutY="149.0" prefHeight="33.0" prefWidth="197.0" />
+      <JFXPasswordField fx:id="password" layoutX="205.0" layoutY="378.0" prefHeight="33.0" prefWidth="236.0" />
+      <JFXButton layoutX="399.0" layoutY="26.0" onAction="#register" prefHeight="23.0" prefWidth="84.0" style="-fx-background-color: #00fcf4;" text="Register">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

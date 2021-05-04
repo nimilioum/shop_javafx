@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="content" prefHeight="750.0" prefWidth="1280.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.controllers.RegisterController">
+   <children>
+      <JFXTextField fx:id="fname" layoutX="292.0" layoutY="211.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXTextField fx:id="lname" layoutX="292.0" layoutY="291.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXTextField fx:id="email" layoutX="292.0" layoutY="371.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXTextField fx:id="username" layoutX="892.0" layoutY="213.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXPasswordField fx:id="password" layoutX="892.0" layoutY="293.0" prefHeight="26.0" prefWidth="261.0" />
+      <JFXPasswordField fx:id="confirmPassword" layoutX="892.0" layoutY="373.0" prefHeight="26.0" prefWidth="261.0" />
+      <Text layoutX="61.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="664.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="664.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="664.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password :" textAlignment="RIGHT" wrappingWidth="211.7294921875">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Line endX="-100.0" endY="427.0" layoutX="740.0" layoutY="108.0" startX="-100.0" startY="-27.0" stroke="#04438c" />
+      <JFXButton layoutX="578.0" layoutY="613.0" onAction="#register" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #00fcf4;" text="Register">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="1178.0" layoutY="27.0" onAction="#login" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #00fcf4;" text="Login">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
