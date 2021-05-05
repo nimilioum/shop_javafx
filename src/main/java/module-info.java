@@ -5,6 +5,7 @@ module com.shop {
     requires java.sql;
     requires mysql.connector.java;
     requires com.jfoenix;
+    requires org.mybatis;
 
     opens com.shop to javafx.fxml;
     opens com.shop.controllers to javafx.base, javafx.fxml;

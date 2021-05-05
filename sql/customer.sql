@@ -1,5 +1,3 @@
-
-
 drop procedure if exists insertCustomer;
 create procedure insertCustomer(in in_username text, in in_email text, in in_password text, in_first_name text,
                                 in in_last_name text, out  id integer)
