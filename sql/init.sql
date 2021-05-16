@@ -99,6 +99,6 @@ create table if not exists item(
 # ----------------------------------------------------------------------------------------
 # default admin
 insert into shop_staff(username, email, password, first_name, last_name, phone_number, nc, is_super_admin)
-    values ('admin', 'admin@shop.com', 'admin', 'none', 'none', 'none', 'none', true);
+    values ('admin', 'admin@shop.com', SHA2('admin', 256), 'none', 'none', 'none', 'none', true);
 
 

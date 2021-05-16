@@ -75,7 +75,7 @@ public class ShopStaff extends Staff{
         String query = "call updateShopStaffUserName(?, ?)";
         CallableStatement statement = DBModel.setConnection().prepareCall(query);
 
-        statement.setString("in_email", username);
+        statement.setString("in_username", username);
         statement.setLong("userId", this.id);
 
         statement.executeUpdate();
@@ -87,7 +87,7 @@ public class ShopStaff extends Staff{
         String query = "call updateShopStaffPassword(?, ?)";
         CallableStatement statement = DBModel.setConnection().prepareCall(query);
 
-        statement.setString("in_email", password);
+        statement.setString("in_password", password);
         statement.setLong("userId", this.id);
 
         statement.executeUpdate();
@@ -122,7 +122,7 @@ public class ShopStaff extends Staff{
         String query = "call updateShopStaffPhone(?, ?)";
         CallableStatement statement = DBModel.setConnection().prepareCall(query);
 
-        statement.setString("in_email", phone);
+        statement.setString("in_phone", phone);
         statement.setLong("userId", this.id);
 
         statement.executeUpdate();
@@ -149,7 +149,7 @@ public class ShopStaff extends Staff{
         String query = "call shopStaffEmailExists(?)";
         CallableStatement statement = DBModel.setConnection().prepareCall(query);
 
-        statement.setString("in_phone", email);
+        statement.setString("in_email", email);
         return statement.executeQuery().next();
     }
 }

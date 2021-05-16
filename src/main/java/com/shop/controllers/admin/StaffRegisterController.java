@@ -57,21 +57,13 @@ public class StaffRegisterController {
                 password.getText().equals("") || confirmPassword.getText().equals("") || staffType.getValue() == null)
             TemplateController.alertError("Please fill the form!");
 
-        else if (ShopStaff.usernameExists(username.getText()))
-            TemplateController.alertError("Username Already exists!");
 
-        else if (ShopStaff.emailExists(email.getText()))
-            TemplateController.alertError("Email Already exists!");
-
-        else if (ShopStaff.phoneNumberExists(phone.getText()))
-            TemplateController.alertError("Phone number Already exists!");
-
-        else if (! password.getText().equals(confirmPassword.getText()))
-            TemplateController.alertError("Passwords do not match!");
 
 
         else {
             if (staffType.getValue().equals("Inventory")) registerInventory();
+            else if (! password.getText().equals(confirmPassword.getText()))
+                TemplateController.alertError("Passwords do not match!");
             else registerDelivery();
 
             TemplateController.alertSuccess("User Created Successfully!");
@@ -88,16 +80,38 @@ public class StaffRegisterController {
     }
 
     private void registerInventory() throws Exception {
-        InventoryStaff staff = new InventoryStaff(fname.getText(), lname.getText(), email.getText(),
+        if (InventoryStaff.usernameExists(username.getText()))
+            TemplateController.alertError("Username Already exists!");
+
+        else if (InventoryStaff.emailExists(email.getText()))
+            TemplateController.alertError("Email Already exists!");
+
+        else if (InventoryStaff.phoneNumberExists(phone.getText()))
+            TemplateController.alertError("Phone number Already exists!");
+
+        else {
+            InventoryStaff staff = new InventoryStaff(fname.getText(), lname.getText(), email.getText(),
                     username.getText(), password.getText(), nc.getText(), phone.getText());
 
-        staff.save();
+            staff.save();
+        }
     }
 
     private void registerDelivery() throws Exception {
-        DeliveryStaff staff = new DeliveryStaff(fname.getText(), lname.getText(), email.getText(),
-                username.getText(), password.getText(), nc.getText(), phone.getText());
+        if (DeliveryStaff.usernameExists(username.getText()))
+            TemplateController.alertError("Username Already exists!");
 
-        staff.save();
+        else if (DeliveryStaff.emailExists(email.getText()))
+            TemplateController.alertError("Email Already exists!");
+
+        else if (DeliveryStaff.phoneNumberExists(phone.getText()))
+            TemplateController.alertError("Phone number Already exists!");
+
+        else {
+            DeliveryStaff staff = new DeliveryStaff(fname.getText(), lname.getText(), email.getText(),
+                    username.getText(), password.getText(), nc.getText(), phone.getText());
+
+            staff.save();
+        }
     }
 }
