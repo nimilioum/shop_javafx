@@ -1,4 +1,4 @@
-# Bank project
+# Shop project
  This project is written as a university assignment.
 
 ---------------------
